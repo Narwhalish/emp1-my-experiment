@@ -2,9 +2,10 @@ import React from "react";
 import Slider from "meteor/empirica:slider";
 
 export default class TaskResponse extends React.Component {
-  handleChange = (num) => {
+  handleChange = (event) => {
     const { player } = this.props;
-    const value = Math.round(num * 100) / 100;
+    const value = Number(event.currentTarget.value);
+
     player.round.set("value", value);
   };
 
@@ -25,6 +26,9 @@ export default class TaskResponse extends React.Component {
   }
 
   renderInput() {
+    const { player } = this.props;
+    const value = player.round.get("value");
+
     return (
       <input
         type="number"
