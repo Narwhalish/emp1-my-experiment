@@ -2,13 +2,13 @@ import React from "react";
 import Slider from "meteor/empirica:slider";
 
 export default class TaskResponse extends React.Component {
-  handleChange = num => {
+  handleChange = (num) => {
     const { player } = this.props;
     const value = Math.round(num * 100) / 100;
     player.round.set("value", value);
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     this.props.player.stage.submit();
   };
@@ -24,18 +24,14 @@ export default class TaskResponse extends React.Component {
     );
   }
 
-  renderSlider() {
-    const { player } = this.props;
-    const value = player.round.get("value");
+  renderInput() {
     return (
-      <Slider
-        min={0}
-        max={1}
-        stepSize={0.01}
-        labelStepSize={0.25}
+      <input
+        type="number"
+        min="1"
         onChange={this.handleChange}
         value={value}
-        hideHandleOnEmpty
+        required
       />
     );
   }
@@ -51,7 +47,7 @@ export default class TaskResponse extends React.Component {
     return (
       <div className="task-response">
         <form onSubmit={this.handleSubmit}>
-          {this.renderSlider()}
+          {this.renderInput()}
 
           <button type="submit">Submit</button>
         </form>
