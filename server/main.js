@@ -20,7 +20,7 @@ Empirica.gameInit((game) => {
 
     player.set("nodeId", i);
 
-    const networkNeighbors = nodes.filter((node) => node.i !== i);
+    const networkNeighbors = nodes.filter((node) => node !== i);
     player.set("neighbors", networkNeighbors);
   });
 
@@ -38,7 +38,13 @@ Empirica.gameInit((game) => {
     round.addStage({
       name: "response",
       displayName: "Response",
-      durationInSeconds: 120,
+      durationInSeconds: game.treatment.stageLength,
+    });
+
+    round.addStage({
+      name: "social",
+      displayName: "Social Information",
+      durationInSeconds: game.treatment.stageLength,
     });
   });
 });
