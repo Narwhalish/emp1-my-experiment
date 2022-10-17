@@ -1,0 +1,69 @@
+treatments:
+  - name: t1
+    factorIds:
+      - AdoFy5cntfvoeocFT
+    archivedAt: 2022-10-17T18:50:47.755Z
+  - name: t2
+    factorIds:
+      - mh5JXRj7jbz7D29fu
+    archivedAt: 2022-10-17T18:50:47.911Z
+  - name: t3
+    factorIds:
+      - 42o4zfSa5MLTjqoP7
+    archivedAt: 2022-10-17T18:50:48.054Z
+  - name: one_player_one_minute
+    factorIds:
+      - iSSAFYjr5furikW3u
+      - AdoFy5cntfvoeocFT
+  - name: three_players_one_minute
+    factorIds:
+      - 42o4zfSa5MLTjqoP7
+      - iSSAFYjr5furikW3u
+  - name: one_player_two_minutes
+    factorIds:
+      - AdoFy5cntfvoeocFT
+      - H6rqko4Wx7QPm5kus
+  - name: three_players_two_minutes
+    factorIds:
+      - 42o4zfSa5MLTjqoP7
+      - H6rqko4Wx7QPm5kus
+factorTypes:
+  - _id: TXzooQ7LxDg8psKET
+    name: playerCount
+    description: The Number of players participating in the given game.
+    required: true
+    type: Integer
+    min: 1
+  - _id: NrTX5TctP6SGcTnhq
+    name: stageLength
+    description: The time length of each stage.
+    required: true
+    type: Integer
+    min: 1
+    max: 3600
+factors:
+  - _id: AdoFy5cntfvoeocFT
+    name: one
+    value: 1
+    factorTypeId: TXzooQ7LxDg8psKET
+  - _id: mh5JXRj7jbz7D29fu
+    name: two
+    value: 2
+    factorTypeId: TXzooQ7LxDg8psKET
+  - _id: 42o4zfSa5MLTjqoP7
+    name: three
+    value: 3
+    factorTypeId: TXzooQ7LxDg8psKET
+  - _id: iSSAFYjr5furikW3u
+    name: one_minute
+    value: 60
+    factorTypeId: NrTX5TctP6SGcTnhq
+  - _id: H6rqko4Wx7QPm5kus
+    name: two_minutes
+    value: 120
+    factorTypeId: NrTX5TctP6SGcTnhq
+lobbyConfigs:
+  - timeoutType: lobby
+    timeoutInSeconds: 300
+    timeoutStrategy: fail
+    gameLobbyIds: []
