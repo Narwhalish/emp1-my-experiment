@@ -3,7 +3,7 @@ import Empirica from "meteor/empirica:core";
 // onGameStart is triggered opnce per game before the game starts, and before
 // the first onRoundStart. It receives the game and list of all the players in
 // the game.
-Empirica.onGameStart(game => {});
+Empirica.onGameStart((game) => {});
 
 // onRoundStart is triggered before each round starts, and before onStageStart.
 // It receives the same options as onGameStart, and the round that is starting.
@@ -20,16 +20,20 @@ Empirica.onStageEnd((game, round, stage) => {});
 // onRoundEnd is triggered after each round.
 // It receives the same options as onGameEnd, and the round that just ended.
 Empirica.onRoundEnd((game, round) => {
-  game.players.forEach(player => {
+  game.players.forEach((player) => {
     const value = player.round.get("value") || 0;
     const prevScore = player.get("score") || 0;
-    player.set("score", prevScore + value);
+    let newScore = 1 - value / round.get("correctAnswer");
+
+    newScore = newScore < 0 ? 0 : newScore;
+
+    player.set("score", prevScore + newScore);
   });
 });
 
 // onGameEnd is triggered when the game ends.
 // It receives the same options as onGameStart.
-Empirica.onGameEnd(game => {});
+Empirica.onGameEnd((game) => {});
 
 // ===========================================================================
 // => onSet, onAppend and onChange ==========================================
