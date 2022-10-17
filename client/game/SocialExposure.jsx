@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Chat } from "@empirica/chat";
+
 export default class SocialExposure extends React.Component {
   renderSocialInteraction(otherPlayer) {
     const value = otherPlayer.round.get("value") ?? "NA";
@@ -13,7 +15,7 @@ export default class SocialExposure extends React.Component {
   }
 
   render() {
-    const { game, player } = this.props;
+    const { game, player, round } = this.props;
 
     const otherPlayers = game.players.filter((p) =>
       player.get("neighbors").includes(p.get("nodeId"))
@@ -26,7 +28,7 @@ export default class SocialExposure extends React.Component {
     return (
       <div className="social-exposure">
         <h3 className="title">Social Information</h3>
-        <p>
+        <p className="title">
           {otherPlayers.length > 1 ? (
             <strong>There are {otherPlayers.length} other players:</strong>
           ) : (
@@ -34,6 +36,12 @@ export default class SocialExposure extends React.Component {
           )}
         </p>
         {otherPlayers.map((p) => this.renderSocialInteraction(p))}
+        <div>
+          <p className="chat-title">
+            <strong>Chat</strong>
+          </p>
+          <Chat player={player} scope={round} />
+        </div>
       </div>
     );
   }
