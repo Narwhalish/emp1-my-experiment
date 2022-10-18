@@ -1,6 +1,7 @@
 import Empirica from "meteor/empirica:core";
-import "./bots.js";
+
 import "./callbacks.js";
+import "./bots.js";
 
 import { taskData } from "./constants";
 
@@ -18,8 +19,10 @@ Empirica.gameInit((game) => {
     player.set("avatar", `/avatars/jdenticon/${player._id}`);
     player.set("score", 0);
 
+    // Give each player a nodeId based on their position
     player.set("nodeId", i);
 
+    // Assign each node as a neighbor
     const networkNeighbors = nodes.filter((node) => node !== i);
     player.set("neighbors", networkNeighbors);
   });

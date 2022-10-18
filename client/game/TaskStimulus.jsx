@@ -6,7 +6,6 @@ export default class TaskStimulus extends React.Component {
 
     const imagePath = round.get("imagePath");
     const questionText = round.get("questionText");
-
     return (
       <div className="task-stimulus">
         <div className="task-image">

@@ -1,11 +1,9 @@
 import React from "react";
-import Slider from "meteor/empirica:slider";
 
 export default class TaskResponse extends React.Component {
   handleChange = (event) => {
-    const { player } = this.props;
     const value = Number(event.currentTarget.value);
-
+    const { player } = this.props;
     player.round.set("value", value);
   };
 
@@ -28,11 +26,10 @@ export default class TaskResponse extends React.Component {
   renderInput() {
     const { player } = this.props;
     const value = player.round.get("value");
-
     return (
       <input
         type="number"
-        min="1"
+        min={1}
         onChange={this.handleChange}
         value={value}
         required
@@ -50,7 +47,7 @@ export default class TaskResponse extends React.Component {
 
     return (
       <div className="task-response">
-        <form onSubmit={this.handleSubmit}>
+        <form className="task-response-form" onSubmit={this.handleSubmit}>
           {this.renderInput()}
 
           <button type="submit">Submit</button>

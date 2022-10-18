@@ -1,11 +1,10 @@
 import React from "react";
-
 import { Chat } from "@empirica/chat";
 
 export default class SocialExposure extends React.Component {
   renderSocialInteraction(otherPlayer) {
+    // Get the value or return NA if no value was entered
     const value = otherPlayer.round.get("value") ?? "NA";
-
     return (
       <div className="alter" key={otherPlayer._id}>
         <img src={otherPlayer.get("avatar")} className="profile-avatar" />
@@ -36,7 +35,7 @@ export default class SocialExposure extends React.Component {
           )}
         </p>
         {otherPlayers.map((p) => this.renderSocialInteraction(p))}
-        {game.treatment.hasChat && (
+        {game.treatment.chat && (
           <div>
             <p className="chat-title">
               <strong>Chat</strong>
