@@ -41,10 +41,12 @@ Empirica.gameInit((game) => {
       durationInSeconds: game.treatment.stageLength,
     });
 
-    round.addStage({
-      name: "social",
-      displayName: "Social Information",
-      durationInSeconds: game.treatment.stageLength,
-    });
+    if (game.players.length > 1) {
+      round.addStage({
+        name: "social",
+        displayName: "Social Information",
+        durationInSeconds: game.treatment.stageLength,
+      });
+    }
   });
 });

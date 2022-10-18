@@ -36,12 +36,14 @@ export default class SocialExposure extends React.Component {
           )}
         </p>
         {otherPlayers.map((p) => this.renderSocialInteraction(p))}
-        <div>
-          <p className="chat-title">
-            <strong>Chat</strong>
-          </p>
-          <Chat player={player} scope={round} />
-        </div>
+        {game.treatment.hasChat && (
+          <div>
+            <p className="chat-title">
+              <strong>Chat</strong>
+            </p>
+            <Chat player={player} scope={round} />
+          </div>
+        )}
       </div>
     );
   }
